@@ -234,7 +234,9 @@
     <div class="rs-services rs-services-style1">
             <div class="container">
                 <div class="row">
-                <?php  print render($page['courses']); ?>
+					<div class="col-md-12">
+						<?php  print render($page['courses']); ?>
+					</div>
                 </div>
             </div>
     </div>

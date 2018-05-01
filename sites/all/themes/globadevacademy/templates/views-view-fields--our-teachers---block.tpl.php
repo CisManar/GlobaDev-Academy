@@ -1,6 +1,6 @@
 <div class="team-item">
               <div class="team-img">
-              <img alt="slide img" src="<?php print file_create_url($row->_field_data['nid']['entity']->field_teacher_image['und'][0]['uri']); ?>"/>
+                <img alt="slide img" src="<?php print file_create_url($row->_field_data['nid']['entity']->field_slide_image['und'][0]['uri']); ?>"/>
               <!--  <img src="images/team/3.jpg" alt="team Image" /> -->
 							  <div class="normal-text">
 								  <h3 class="team-name"><?php print $fields['title']->content; ?></h3>

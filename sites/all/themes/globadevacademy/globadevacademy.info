@@ -36,8 +36,7 @@ stylesheets[all][] = css/responsive.css
 
 stylesheets[all][] = assets/owl.carousel.css
 stylesheets[all][] = assets/owlcarousel/assets/owl.carousel.min.css
-stylesheets[all][] = assests/owlcarousel/assets/owl.theme.default.css
-stylesheets[all][] = assests/owlcarousel/assets/owl.theme.default.min.css
+
 
 scripts[] = js/modernizr-2.8.3.min.js
 scripts[] = js/jquery.min.js
