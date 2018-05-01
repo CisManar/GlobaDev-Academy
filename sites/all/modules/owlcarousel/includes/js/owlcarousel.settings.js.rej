@@ -1,0 +1,15 @@
+--- includes/js/owlcarousel.settings.js
++++ includes/js/owlcarousel.settings.js
+@@ -8,8 +8,10 @@
+   Drupal.behaviors.owlcarousel = {
+     attach: function(context, settings) {
+       for (var carousel in settings.owlcarousel) {
+-        settings.owlcarousel.instance = carousel;
+-        this.attachInit(carousel, settings.owlcarousel);
++        if (carousel != 'instance') {
++          settings.owlcarousel.instance = carousel;
++          this.attachInit(carousel, settings.owlcarousel);
++        }
+       }
+     },
+ 

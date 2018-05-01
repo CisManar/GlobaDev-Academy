@@ -1,0 +1,58 @@
+name = GlobaDev Academy Theme
+description = This developed by Manar Sarah
+core = 7.x
+
+screenshot = screenshot.png
+
+regions[header] = Header 
+regions[highlighted] = Highlighted 
+regions[help] = Help 
+regions[content] = Content 
+regions[sidebar_first] = Left sidebar 
+regions[sidebar_second] = Right sidebar 
+regions[footer] = Footer 
+
+
+regions[main_slider] = main_slider
+regions[courses] = courses
+regions[teachers] = teachers
+
+
+stylesheets[all][] = apple-touch-icon.html
+stylesheets[all][] = css/bootstrap.min.css
+stylesheets[all][] = css/font-awesome.min.css
+stylesheets[all][] = css/animate.css
+stylesheets[all][] = css/slick.css
+stylesheets[all][] = css/magnific-popup.css
+stylesheets[all][] = css/off-canvas.css
+stylesheets[all][] = fonts/flaticon.css
+stylesheets[all][] = fonts/fonts2/flaticon.css
+stylesheets[all][] = css/color-style.css
+stylesheets[all][] = css/rsmenu-main.css
+stylesheets[all][] = css/rsmenu-transitions.css
+stylesheets[all][] = css/mystyle.css
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/responsive.css
+
+stylesheets[all][] = assets/owl.carousel.css
+stylesheets[all][] = assets/owlcarousel/assets/owl.carousel.min.css
+stylesheets[all][] = assests/owlcarousel/assets/owl.theme.default.css
+stylesheets[all][] = assests/owlcarousel/assets/owl.theme.default.min.css
+
+scripts[] = js/modernizr-2.8.3.min.js
+scripts[] = js/jquery.min.js
+scripts[] = js/bootstrap.min.js
+scripts[] = assests/owlcarousel/owl.carousel.js
+scripts[] = assests/owlcarousel/owl.carousel.min.js
+scripts[] = js/slick.min.js
+scripts[] = js/isotope.pkgd.min.js
+scripts[] = js/imagesloaded.pkgd.min.js
+scripts[] = js/wow.min.js
+scripts[] = js/waypoints.min.js
+scripts[] = js/jquery.counterup.min.js
+scripts[] = js/jquery.magnific-popup.min.js
+scripts[] = js/rsmenu-main.js
+scripts[] = js/plugins.js
+scripts[] = js/color-style.js
+scripts[] = js/main.js
+
