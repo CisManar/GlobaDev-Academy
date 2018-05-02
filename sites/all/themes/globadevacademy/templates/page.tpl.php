@@ -222,7 +222,7 @@
 				<!-- Item 1 -->
         
         
-        <?php  print render($page['main_slider']); ?>
+        			<?php  print render($page['main_slider']); ?>
 
 
         	</div>         
@@ -241,20 +241,58 @@
             </div>
     </div>
 
+
+
+
 		<!-- Team Start -->
-    <div id="rs-team" class="rs-team sec-color sec-spacer">
+		<div id="rs-team" class="rs-team sec-color sec-spacer">
             <div class="container">
                 <div class="sec-title mb-50 text-center">
                     <h2>OUR EXPERIENCED STAFFS</h2>      
                 	<p>Considering desire as primary motivation for the generation of narratives is a useful concept.</p>
                 </div>
-                <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="5000" data-smart-speed="1200" data-dots="true" data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="true" data-ipad-device-dots="true" data-md-device="3" data-md-device-nav="true" data-md-device-dots="true">
+				<div class="col-md-12">				
+				<div class="rs-carousel owl-carousel techers" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="5000" data-smart-speed="1200" data-dots="true" data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="true" data-ipad-device-dots="true" data-md-device="3" data-md-device-nav="true" data-md-device-dots="true">
+					
+			
+				<?php print render($page['teachers']); ?>
 
-					<?php print render($page['teachers']); ?>
 
+			
 				</div>
+				</div>
+
 			</div>
 		</div>
         <!-- Team End -->
+		
 
-
+				<!-- Testimonial Start -->
+				<div id="rs-testimonial" class="rs-testimonial bg5 sec-spacer">
+			<div class="container">
+				<div class="sec-title mb-50 text-center">
+					<h2 class="white-color">WHAT PEOPLE SAYS</h2>      
+					<p class="white-color">Fusce sem dolor, interdum in efficitur at, faucibus nec lorem. Sed nec molestie justo.</p>
+				</div>
+				<div class="row">
+			        <div class="col-md-12">
+						<div id="mem-testi"  class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="1200" data-dots="true" data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="true" data-ipad-device-dots="true" data-md-device="2" data-md-device-nav="true" data-md-device-dots="true">
+			                <div class="testimonial-item">
+			                    <div class="testi-img">
+			                        <img src="sites/all/themes/globadevacademy/images/testimonial/1.jpg" alt="Jhon Smith">
+			                    </div>
+			                    <div class="testi-desc">
+			                        <h4 class="testi-name">Luise Henrikes</h4>
+			                        <p>
+			                            Etiam non elit nec augue tempor gravida et sed velit. Aliquam tempus eget lorem ut malesuada. Phasellus dictum est sed libero posuere dignissim.
+			                        </p>
+			                    </div>
+			                </div>
+							
+							
+			            </div>
+			        </div>
+			    </div>
+			</div>
+        </div>
+        <!-- Testimonial End -->

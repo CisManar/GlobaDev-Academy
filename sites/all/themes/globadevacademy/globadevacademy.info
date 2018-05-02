@@ -16,6 +16,7 @@ regions[footer] = Footer
 regions[main_slider] = main_slider
 regions[courses] = courses
 regions[teachers] = teachers
+regions[testimonial] = testimonial
 
 
 stylesheets[all][] = apple-touch-icon.html
@@ -34,15 +35,15 @@ stylesheets[all][] = css/mystyle.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/responsive.css
 
-stylesheets[all][] = assets/owl.carousel.css
-stylesheets[all][] = assets/owlcarousel/assets/owl.carousel.min.css
 
+stylesheets[all][] = assets/owlcarousel/assets/owl.carousel.min.css
+stylesheets[all][] = assets/owlcarousel/assets/owl.theme.default.min.css
+stylesheets[all][] = assets/owlcarousel/assets/owl.theme.green.css
 
 scripts[] = js/modernizr-2.8.3.min.js
 scripts[] = js/jquery.min.js
 scripts[] = js/bootstrap.min.js
-scripts[] = assests/owlcarousel/owl.carousel.js
-scripts[] = assests/owlcarousel/owl.carousel.min.js
+scripts[] = assets/owlcarousel/owl.carousel.min.js
 scripts[] = js/slick.min.js
 scripts[] = js/isotope.pkgd.min.js
 scripts[] = js/imagesloaded.pkgd.min.js

@@ -555,7 +555,7 @@ ul {
   background-attachment: fixed;
 }
 .bg5 {
-  background-image: url(images/bg/testimonial-bg.jpg);
+  background-image: url(../images/bg/testimonial-bg.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -3378,7 +3378,7 @@ ul {
 .rs-team .team-item .team-title:after {
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: 3;
   width: 50px;
   height: 2px;
   background: #ff3115;
@@ -6596,4 +6596,9 @@ ul {
 }
 .rs-footer-2 .footer-share {
   margin-top: 20px;
+}
+/**********************/
+.teacher-pic{
+  width: 300px;
+  height: 400px;;
 }

@@ -62,7 +62,8 @@
 	/*-------------------------------------
 	       Home page Slider
 	       -------------------------------------*/	  
-	      // Declare Carousel jquery object
+		  // Declare Carousel jquery object
+		  
 	      var owl = $('#home-slider');
 
 	      // Carousel initialization
@@ -372,3 +373,11 @@
 	
 
 })(jQuery);
+
+$(document).ready(function(){
+	$(".owl-carousel").owlCarousel();
+  });
+
+
+
+
