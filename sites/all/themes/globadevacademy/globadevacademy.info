@@ -17,7 +17,7 @@ regions[main_slider] = main_slider
 regions[courses] = courses
 regions[teachers] = teachers
 regions[testimonial] = testimonial
-
+regions[events] = events
 
 stylesheets[all][] = apple-touch-icon.html
 stylesheets[all][] = css/bootstrap.min.css
@@ -39,6 +39,7 @@ stylesheets[all][] = css/responsive.css
 stylesheets[all][] = assets/owlcarousel/assets/owl.carousel.min.css
 stylesheets[all][] = assets/owlcarousel/assets/owl.theme.default.min.css
 stylesheets[all][] = assets/owlcarousel/assets/owl.theme.green.css
+stylesheets[all][] = /sites/all/modules/devel/devel.css
 
 scripts[] = js/modernizr-2.8.3.min.js
 scripts[] = js/jquery.min.js

@@ -79,6 +79,7 @@
 		echo render($form);
 	}
 ?>
+
         <!--Preloader area start here-->
         <div class="book_preload">
             <div class="book">
@@ -99,7 +100,10 @@
 						<div class="col-md-6">
 							<div class="rs-toolbar-left">
 								<div class="welcome-message">
-									<i class="fa fa-bank"></i><span>Welcome to <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a></span> 
+									<i class="fa fa-bank"></i>
+									<span>Welcome to <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
+									<span><?php print $site_name; ?></span></a>
+								</span> 
 								</div>
 							</div>
 						</div>
@@ -134,7 +138,7 @@
 						                <div class="info-text">
 						                    <a href="mailto:info@domain.com">
 						                    	<span>Mail Us</span>
-												info@domain.com
+												<?php print $field_our_email; ?>
 											</a>
 						                </div>
 						            </div>
@@ -215,6 +219,7 @@
 
 		</div>
         <!--Full width header End-->
+		<?php print render($page['header']); ?>
 
 		<!-- Slider Area Start -->
     <div id="rs-slider" class="slider-overlay-2">     
@@ -239,10 +244,71 @@
 					</div>
                 </div>
             </div>
-    </div>
-
-
-
+	</div>
+	
+	<div id="rs-about" class="rs-about sec-spacer">
+            <div class="container">
+                <div class="sec-title mb-50 text-center">
+                    <h2>ABOUT US</h2>      
+                	<p>Fusce sem dolor, interdum in fficitur at, faucibus nec lorem. Sed nec molestie justo.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-img rs-animation-hover">
+							<img src="images/about/about.jpg" alt="img02"/>
+							<a class="popup-youtube rs-animation-fade" href="https://www.youtube.com/watch?v=3f9CAMoj3Ec" title="Video Icon">
+							</a>
+							<div class="overly-border"></div>
+						</div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                    	<div class="about-desc">
+                		    <h3>WELCOME TO <?php print $site_name; ?> </h3>      
+                			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    	</div>
+						<div id="accordion" class="rs-accordion-style1">
+						    <div class="card">
+						        <div class="card-header" id="headingOne">
+						            <h3 class="acdn-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          		Our History
+						            </h3>
+						        </div>
+						        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+						            <div class="card-body">
+						                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+						            </div>
+						        </div>
+						    </div>
+						    <div class="card">
+						        <div class="card-header" id="headingTwo">
+						            <h3 class="acdn-title collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						          		Our Mission
+						            </h3>
+						        </div>
+						        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+						            <div class="card-body">
+						                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+						            </div>
+						        </div>
+						    </div>
+						    <div class="card">
+						        <div class="card-header mb-0" id="headingThree">
+						            <h3 class="acdn-title collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						          		Our Vision
+						            </h3>
+						        </div>
+						        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+						            <div class="card-body">
+						                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+						            </div>
+						        </div>
+						    </div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About Us End -->
 
 		<!-- Team Start -->
 		<div id="rs-team" class="rs-team sec-color sec-spacer">
@@ -255,18 +321,14 @@
 				<div class="rs-carousel owl-carousel techers" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="5000" data-smart-speed="1200" data-dots="true" data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="true" data-ipad-device-dots="true" data-md-device="3" data-md-device-nav="true" data-md-device-dots="true">
 					
 			
-				<?php print render($page['teachers']); ?>
+					<?php print render($page['teachers']); ?>
 
-
-			
 				</div>
 				</div>
 
 			</div>
 		</div>
         <!-- Team End -->
-		
-
 				<!-- Testimonial Start -->
 				<div id="rs-testimonial" class="rs-testimonial bg5 sec-spacer">
 			<div class="container">
@@ -277,17 +339,9 @@
 				<div class="row">
 			        <div class="col-md-12">
 						<div id="mem-testi"  class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="1200" data-dots="true" data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="true" data-ipad-device-dots="true" data-md-device="2" data-md-device-nav="true" data-md-device-dots="true">
-			                <div class="testimonial-item">
-			                    <div class="testi-img">
-			                        <img src="sites/all/themes/globadevacademy/images/testimonial/1.jpg" alt="Jhon Smith">
-			                    </div>
-			                    <div class="testi-desc">
-			                        <h4 class="testi-name">Luise Henrikes</h4>
-			                        <p>
-			                            Etiam non elit nec augue tempor gravida et sed velit. Aliquam tempus eget lorem ut malesuada. Phasellus dictum est sed libero posuere dignissim.
-			                        </p>
-			                    </div>
-			                </div>
+							
+						<?php print render($page['testimonial']); ?>
+
 							
 							
 			            </div>
@@ -295,4 +349,27 @@
 			    </div>
 			</div>
         </div>
-        <!-- Testimonial End -->
+		<!-- Testimonial End -->
+		
+
+
+		  <!-- Events Start -->
+		  <div id="rs-events" class="rs-events sec-spacer">
+			<div class="container">
+				<div class="sec-title mb-50 text-center">
+                    <h2>OUR UPCOMING EVENTS</h2>      
+                	<p>I feel the presence of the Almighty, who formed us in his own image, and the breath.</p>
+                </div>
+				<div class="row">
+			        <div class="col-md-12">
+						<div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="false" data-autoplay-timeout="5000" data-smart-speed="1200" data-dots="true" data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true" data-mobile-device-dots="true" data-ipad-device="2" data-ipad-device-nav="true" data-ipad-device-dots="true" data-md-device="3" data-md-device-nav="true" data-md-device-dots="true">
+
+							<?php print render($page['events']); ?>
+
+			            
+			            </div>
+			        </div>
+			    </div>
+			</div>
+        </div>
+        <!-- Events End -->

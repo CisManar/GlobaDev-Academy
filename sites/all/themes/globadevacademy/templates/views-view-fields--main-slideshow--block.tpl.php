@@ -10,8 +10,10 @@
 									<p data-animation-in="fadeInUp" data-animation-out="animate-out" class="slider-desc">
                                     <?php print $fields['field_slide_text']->content; ?>
                                     </p>  
+									<!--
 									<a href="#" class="sl-readmore-btn mr-30" data-animation-in="fadeInUp" data-animation-out="animate-out">READ MORE</a>
 									<a href="#" class="sl-get-started-btn" data-animation-in="fadeInUp" data-animation-out="animate-out">GET STARTED NOW</a>
+									-->
 								</div>
 							</div>
 						</div>
