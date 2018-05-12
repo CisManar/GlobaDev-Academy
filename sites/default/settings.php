@@ -249,7 +249,7 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'globadevacademy',
+      'database' => 'globaDevAcademy',
       'username' => 'root',
       'password' => '9090',
       'host' => 'localhost',
@@ -290,7 +290,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = 'z26pARvyB_PYCWY86zCIn5MIbumyp7pFv4EkLvQMzm0';
+$drupal_hash_salt = '4E9CC53q80P_5homlq6NTRaWu09dlLnB84YcSRlP-60';
 
 /**
  * Base URL (optional).
@@ -333,7 +333,7 @@ $drupal_hash_salt = 'z26pARvyB_PYCWY86zCIn5MIbumyp7pFv4EkLvQMzm0';
  */
 ini_set('session.gc_probability', 1);
 ini_set('session.gc_divisor', 100);
-
+ini_set('memory_limit', '64M');
 /**
  * Set session lifetime (in seconds), i.e. the time from the user's last visit
  * to the active session may be deleted by the session garbage collector. When

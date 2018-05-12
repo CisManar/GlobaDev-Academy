@@ -1,0 +1,312 @@
+<?php
+
+/**
+ * @file
+ * Allows to define if a content type must have more than one node in the site.
+ */
+
+define('ONLYONE_FORMAT_INITIAL_DRUSH', ' (');
+define('ONLYONE_FORMAT_FINAL_DRUSH', ')');
+
+define('ONLYONE_FORMAT_INITIAL_ADMIN', ' <strong>(');
+define('ONLYONE_FORMAT_FINAL_ADMIN', ') </strong>');
+
+/**
+ * Implements hook_help().
+ */
+function onlyone_help($path, $arg) {
+  switch ($path) {
+    // Main module help.
+    case 'admin/help#onlyone':
+
+      // The route onlyone/add exists or not?
+      if (variable_get('onlyone_new_menu_entry')) {
+        // Creating the link.
+        $onlyone_add_page = t('<a href="@link">Add content (Only One)</a> page', array('@link' => url('onlyone/add')));
+      }
+      else {
+        // As the route doesn't exists we use a string.
+        $onlyone_add_page = t('<em>Add content (Only One)</em> page (onlyone/add)');
+      }
+
+      // Array with routes to replace.
+      $routes = array(
+        '@settings-page' => url('admin/config/content/onlyone/settings'),
+        '@content' => url('admin/content'),
+        '!onlyone_add_page' => $onlyone_add_page,
+        '@add-content' => url('node/add'),
+      );
+
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Allow a content type only once (Only One) module allows the creation of Only One node per language in the selected content types for this configuration.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Configuring content types') . '</dt>';
+      $output .= '<dd>' . t('To configure the content types to allow for Only One node per language, visit the <a href="@config-page">Only One</a> page, in the <em>Available content types for Only One</em> section and <em>check</em> the content types that should have Only One node per language. For this you need the <em>Administer Only One</em> permission.', array('@config-page' => url('admin/config/content/onlyone'))) . '</dd>';
+      $output .= '<dt>' . t('Configuring module settings') . '</dt>';
+      $output .= '<dd>' . t('To configure the module settings visit the <a href="@settings-page">Settings</a> page, if you want to have the configured content types in a new menu entry named <em>Add content (Only One)</em> you must check the option <em>Show configured content types in a new menu entry?</em>, the new menu link will be available in the <a href="@content">Content</a> page as an action link to the !onlyone_add_page, then the <a href="@add-content">Add content</a> page will show the not configured content types. For this you need the <em>Administer Only One</em> permission.', $routes) . '</dd>';
+      $output .= '<dt>' . t('Creating nodes') . '</dt>';
+      $output .= '<dd>' . t('Once you try to <a href="@add-content">Add content</a>, if the chosen content type is configured to have Only One node and it already has one node created in the actual language, you will be redirected to <em>edit</em> the node. Otherwise you will go to create a new node.', array('@add-content' => url('node/add'))) . '</dd>';
+      $output .= '</dl>';
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function onlyone_admin_paths() {
+  if (variable_get('node_admin_theme')) {
+    $paths = array(
+      'onlyone/add' => TRUE,
+    );
+    return $paths;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function onlyone_menu() {
+  $items['admin/config/content/onlyone'] = array(
+    'title' => 'Only One',
+    'description' => 'Configure the content types to allow for Only One node per language.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('config_content_types'),
+    'access arguments' => array('administer onlyone'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'onlyone.admin.inc',
+  );
+
+  $items['admin/config/content/onlyone/default'] = array(
+    'title' => 'Only One',
+    'description' => 'Configure the content types to allow for Only One node per language.',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 2,
+  );
+
+  $items['admin/config/content/onlyone/settings'] = array(
+    'title' => 'Settings',
+    'description' => 'Only One Settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('onlyone_admin_settings'),
+    'access arguments' => array('administer onlyone'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'onlyone.admin.inc',
+    'weight' => 2,
+  );
+
+  if (variable_get('onlyone_new_menu_entry')) {
+    $items['onlyone/add'] = array(
+      'title' => 'Add content (Only One)',
+      'page callback' => 'onlyone_add_page',
+      'access callback' => '_node_add_access',
+      'file' => 'onlyone.pages.inc',
+      'menu_name' => 'management',
+      'type' => MENU_NORMAL_ITEM,
+      'weight' => -1,
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_link_alter().
+ */
+function onlyone_menu_link_alter(&$item) {
+  if ($item['page callback'] == 'onlyone_add_page') {
+    // Assigning /admin/content as parent.
+    $item['plid'] = 9;
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function onlyone_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  // Add action link to 'onlyone/add' on 'admin/content' page.
+  if (variable_get('onlyone_new_menu_entry') && $root_path == 'admin/content') {
+    $item = menu_get_item('onlyone/add');
+    if ($item['access']) {
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+        '#weight' => -1,
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function onlyone_theme_registry_alter(&$theme_registry) {
+  // This is necessary due to:
+  // https://www.drupal.org/project/drupal/issues/2965718 and will change once
+  // this issue will be solved.
+  if (variable_get('onlyone_new_menu_entry')) {
+    $theme_registry['node_add_list']['file'] = 'onlyone.pages.inc';
+    $theme_registry['node_add_list']['theme path'] = drupal_get_path('module', 'onlyone');
+    $theme_registry['node_add_list']['function'] = 'onlyone_node_add_list';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block content add list templates.
+ */
+function onlyone_preprocess_node_add_list(&$variables) {
+  // Getting the configured content types to have only one node.
+  $onlyone_content_types = variable_get('onlyone_node_types');
+
+  // Getting the current path.
+  $current_path = current_path();
+
+  // Creating the message variable.
+  if ($current_path == 'onlyone/add') {
+    $variables['message'] = t('You have not configured any content type yet, go to the <a href="@config-content-types">Only One page</a> to configure the content types.', array('@config-content-types' => url('admin/config/content/onlyone')));
+  }
+  else {
+    $variables['message'] = t('You have not created any content types yet. Go to the <a href="@create-content">content type creation page</a> to add a new content type.', array('@create-content' => url('admin/structure/types/add')));
+  }
+
+  // Loading the helper functions file.
+  module_load_include('inc', 'onlyone', 'onlyone.helpers');
+
+  // Getting variable to know if we should show the configured content type
+  // in a new page.
+  $onlyone_new_menu_entry = variable_get('onlyone_new_menu_entry');
+
+  // Changing the title.
+  foreach ($variables['content'] as $key => $element) {
+    // Getting the content type name.
+    $content_type = substr($element['href'], 9);
+
+    // Checking if the content type is configured.
+    if (in_array($content_type, $onlyone_content_types)) {
+      // We need to modify the links?
+      if (!($onlyone_new_menu_entry xor $current_path == 'onlyone/add')) {
+        // Checking if exists nodes created for the content type.
+        if (_onlyone_exists_nodes_content_type($content_type)) {
+          // Getting the content type name.
+          $content_type_name = $variables['content'][$key]['title'];
+          // Assigning the new name.
+          $variables['content'][$key]['title'] = t('@content_type_name (Edit)', array('@content_type_name' => $content_type_name));
+        }
+        $original_description = empty($variables['content'][$key]['description']) ? '' : rtrim($variables['content'][$key]['description'], '.') . '.';
+        $variables['content'][$key]['description'] = t('!description <strong>Only a single node can be created and edited</strong>.', array('!description' => $original_description));
+      }
+      else {
+        // We need to delete the links.
+        unset($variables['content'][$key]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function onlyone_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Getting the configured content types to have only one node.
+  $onlyone_content_types = variable_get('onlyone_node_types');
+  // Getting the name of the node type.
+  $content_type = $form['type']['#value'];
+  // Verifying if the new node should by onlyone.
+  if (isset($onlyone_content_types) && in_array($content_type, $onlyone_content_types, TRUE)) {
+    $node = $form_state['node'];
+    // If we are trying to create a new node.
+    if (!isset($node->nid) || isset($node->is_new)) {
+      // Loading the helper functions file.
+      module_load_include('inc', 'onlyone', 'onlyone.helpers');
+      // If we have one node, then redirect to the edit page.
+      $nid = _onlyone_exists_nodes_content_type($content_type);
+      if ($nid) {
+        drupal_goto('node/' . $nid . '/edit');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function onlyone_permission() {
+  return array(
+    'administer onlyone' => array(
+      'title' => t('Administer Only One'),
+      'description' => t('Allow access to configure the module settings.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_type_delete().
+ */
+function onlyone_node_type_delete($info) {
+  // Getting the content type machine name.
+  $content_type = $info->type;
+  // Loading the helper functions file.
+  module_load_include('inc', 'onlyone', 'onlyone.helpers');
+  // Deleting the value from the config.
+  _onlyone_delete_content_type_config($content_type);
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function onlyone_node_insert($node) {
+  // Loading the helper functions file.
+  module_load_include('inc', 'onlyone', 'onlyone.helpers');
+  // Rebuild the menu if needed.
+  _onlyone_rebuild_menu($node->type);
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function onlyone_node_delete($node) {
+  // Loading the helper functions file.
+  module_load_include('inc', 'onlyone', 'onlyone.helpers');
+  // As there are not hooks to be fired once a node is deleted from the database
+  // a trick similar to the https://www.drupal.org/project/hook_post_action
+  // module needs to be implement, similar to the answer described in
+  // https://stackoverflow.com/a/46038871/3653989 .
+  // Invoking the callback function AFTER the node is deleted.
+  drupal_register_shutdown_function('_onlyone_rebuild_menu', $node);
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function onlyone_node_validate($node, $form, &$form_state) {
+  // Getting the configured content types.
+  $onlyone_content_types = variable_get('onlyone_node_types');
+  // If the content type is configured and the language is locked we need to
+  // check if exits a node created in the node language. See:
+  // https://www.drupal.org/project/onlyone/issues/2962186
+  // https://www.drupal.org/project/onlyone/issues/2969293 .
+  if (in_array($node->type, $onlyone_content_types)) {
+    // Loading the helper functions file.
+    module_load_include('inc', 'onlyone', 'onlyone.helpers');
+    // If we have a node in the current language we should not insert a new
+    // one.
+    $nid = _onlyone_exists_nodes_content_type($node->type, $node->language);
+    // If the existing node have the same id that the node that is being saved
+    // then is the same node that is being updated.
+    if ($nid && $nid != $node->nid) {
+      $existing_node = node_load($nid);
+
+      $values = array(
+        '%content_type' => $node->type,
+        '@href' => url(drupal_get_path_alias('node/' . $existing_node->nid)),
+        '!title' => $existing_node->title,
+        '%language' => t('Language neutral'),
+      );
+      // Setting the error in the language field.
+      form_set_error('language', t("The content type %content_type is configured to have Only One node per language but the node <a href='@href'>!title</a> exists for the %language language.", $values));
+    }
+  }
+}

@@ -1,0 +1,195 @@
+Allow a content type only once (Only One) 7.x-1.13, 2018-XX-XX
+--------------------------------------------------------------
+Changes since 7.x-1.12:
+
+- #2972388 by adriancid: Don't sort the result if is not needed.
+- #2969323 by adriancid: Fix the module version in the CHANGELOG.txt.
+- #2969293 by adriancid: Don't allow the creation of multiples nodes on 
+  configured content types.
+- #2968553 by adriancid: Remove the unnecessary verification in the callback for
+  the onlyone-new-menu-entry drush command.
+
+Allow a content type only once (Only One) 7.x-1.12, 2018-04-27
+--------------------------------------------------------------
+Changes since 7.x-1.11:
+
+- #2959244 by adriancid: Update the module documentation.
+- #2966904 by adriancid: Drush command to configure the module options.
+- #2966850 by adriancid: Rename the configuration variable new_menu_entry to 
+  onlyone_new_menu_entry.
+- #2965737 by adriancid: Show a message in the Add content (Only One) page if 
+  there are not configured content types.
+- #2966586 by adriancid: Don't show the onlyone/add page it the module is not 
+  configured to do it.
+- #2966091 by adriancid: Simplify the logic expression to show the links in a 
+  menu or another.
+- #2960494 by adriancid: Save the content types configuration form only if a 
+  change is made.
+- #2966146 by adriancid: Save the settings form only if a change is made.
+- #2966223 by adriancid: Create a new action link in the admin/content page for
+  the onlyone/add page.
+- #2959384 by adriancid, merauluka: Create a new menu entry for the configured
+  content types.
+- #2962801 by adriancid: Change language 'Not specified' to 'Language neutral'.
+- #2962186 by adriancid: Multiples nodes allowed creating nodes with locked 
+  languages on configured content types.
+- #2959295 by adriancid, merauluka: Change the message in the Add content page.
+- #2962076 by adriancid: Create variables once the module is installed.
+- #2958807 by adriancid: Create a configuration form for the module options.
+- #2955368 by adriancid: Use the language constants for the language codes.
+- #2952339 by adriancid: Show a message if there are not content types on the 
+  site.
+- #2952116 by adriancid: Add the css file only if we have not available content
+  types.
+- #2951606 by adriancid: Fix coding standard.
+- #2951602 by adriancid: Put the ONLYONE_GREEN_OUTPUT constant in the drush
+  command file.
+- #2951187 by Елин Й., adriancid: Simplify if statement for getting the node id.
+- #2951188 by Елин Й., adriancid: Typo in constant for green output.
+- #2951186 by Елин Й., adriancid: Load helper function only when they're needed.
+- #2948485 by adriancid: Add quotes to the module name in the .info file.
+- #2948480 by adriancid: The module version in the CHANGELOG.txt file is not
+  correct.
+- #2945126 by adriancid: Highlight the text 'Content types which have more 
+  than one node in at least one language'.
+- #2928703 by adriancid: Put the internal utility functions in another file.
+
+Allow a content type only once (Only One) 7.x-1.11, 2018-01-31
+--------------------------------------------------------------
+Changes since 7.x-1.10:
+
+- #2941043 by adriancid: Content type configuration is only deleted if you use
+  the content type delete form.
+- #2925365 by adriancid: Remove the functionalities that allows to see the drush
+  commands in the module help page.
+
+Allow a content type only once (Only One) 7.x-1.10, 2017-08-16
+--------------------------------------------------------------
+Changes since 7.x-1.9:
+
+- #2902674 by adriancid: Configuration variable not updated once a content type
+  is deleted.
+- #2860649 by adriancid, xmacinfo, oknate: Improve the Add content page.
+- #2902623 by adriancid: Improve the order in which the content types are shown.
+- #2899389 by adriancid: Incorrect example in drush onlyone-list command
+  definition.
+- #2892439 by adriancid: Change the drush error codes.
+- #2881503 by adriancid: Use dt() function to translate the drush command
+  strings.
+- #2878927 by adriancid: Merge the process functions.
+- #2877326 by adriancid: Merge the drush onlyone-summary command into
+  onlyone-list.
+- #2877133 by adriancid: Show if the content type is configured in Only One mode
+  in the drush ol available command.
+- #2868701 by hgunicamp, adriancid: Improve the module strings.
+
+Allow a content type only once (Only One) 7.x-1.9, 2017-04-09
+-------------------------------------------------------------
+Changes since 7.x-1.8:
+
+- #2860509 by adriancid: Create a CHANGELOG.txt file.
+- #2876693 by adriancid: Change all the array declaration to the long array
+  syntax.
+- #2868701 by hgunicamp, adriancid: Improve the module strings.
+- #2876186 by adriancid: Change unnecessary LEFT JOIN by JOIN query.
+- #2876156 by adriancid: Improve the function calls to translate the plural
+  strings.
+- #2876146 by adriancid: Eliminate the language when there are 0 Nodes in
+  multilingual sites.
+- #2875886 by adriancid: Change the label for the und and zxx language codes.
+- #2875829 by adriancid: Improve the query for available content types in
+  multilingual sites.
+- #2875536 by adriancid: Eliminate a not necessary rowCount() validation.
+- #2875471 by adriancid: Improve the query for not available content types
+  in multilingual sites.
+
+Allow a content type only once (Only One) 7.x-1.8, 2017-04-16
+-------------------------------------------------------------
+Changes since 7.x-1.7:
+
+- #2870123 by adriancid: Change the module name.
+- #2867813 by adriancid: Improve the output message when you use the
+  onlyone-disable drush command.
+- #2867811 by adriancid: Improve the output message when you use the
+  onlyone-enable drush command.
+- #2868349 by adriancid: Change the onlyone_node_types variable to a numbered
+  list.
+- #2867211 by adriancid: Change the module package.
+- #2866727 by adriancid: Message with number of nodes are not correctly shown.
+- #2866732 by adriancid: Use the brackets with the table names in all the SQL
+  queries.
+- #2866414 by adriancid: Update the help section.
+- #2860542 by adriancid: Create a permission to administer the module.
+- #2860686 by adriancid: Change the hook_form_alter hook by the
+  hook_form_BASE_FORM_ID_alter hook.
+- #2860512 by adriancid: Update the README.txt file.
+
+Only One 7.x-1.7, 2017-02-25
+----------------------------
+Changes since 7.x-1.6:
+
+- Issue #2855954 by adriancid, xmacinfo: Merge drush commands.
+
+Only One 7.x-1.6, 2017-01-09
+----------------------------
+Changes since 7.x-1.5:
+
+- by adriancid: Added compatibility with php older versions.
+- by adriancid: Changed drush_plural function name to _onlyone_drush_plural.
+- #2841831 by Neograph734, adriancid: Correct minor spelling issues.
+- by adriancid: Updated README.txt file.
+- by adriancid: Fixed coding standards.
+- by adriancid: Improved drush commands output.
+- by adriancid: Fixed grammar errors.
+
+Only One 7.x-1.5, 2017-01-05
+----------------------------
+Changes since 7.x-1.4:
+
+- by adriancid: Fixed spelling errors.
+- by adriancid: Added drush_plural function.
+- by adriancid: Changed the name of a function.
+- by adriancid: Added compatibility with older php versions.
+
+Only One 7.x-1.4, 2016-09-25
+----------------------------
+Changes since 7.x-1.3:
+
+- #2801543 by adriancid: Drush command to configure the content types.
+
+Only One 7.x-1.3, 2016-09-24
+----------------------------
+Changes since 7.x-1.2:
+
+- by adriancid: Updated the information about the drush onlyone-enable command.
+- #2801543 by adriancid: Drush command to configure the content types.
+- #2805481 by adriancid: Error in drush onlyone-list command.
+- by adriancid: Added validation function to drush onlyone enable command.
+
+Only One 7.x-1.2, 2016-09-22
+----------------------------
+Changes since 7.x-1.1:
+
+- by adriancid: Added documentation to helper functions.
+- by adriancid: Revision of coding standards.
+- by adriancid: Added the drush onlyone-enable command definition.
+- by adriancid: Added two new helper functions for the output strings.
+
+Only One 7.x-1.1, 2016-09-14
+----------------------------
+Changes since 7.x-1.0:
+
+- by adriancid: Added README.txt file.
+- by adriancid: Implemented hook_drush_help.
+- #2800099 by adriancid: Drush command to see the status of all content types.
+- by adriancid: Added helper functions in admin form.
+- by adriancid: Added multilingual option for drush oa command.
+- by adriancid: Updated code for the not available content types list.
+- by adriancid: Updated helpers functions in onlyone.module.
+- by adriancid: Added multilingual option for drush ona command.
+- by adriancid: Added the drush commands drush oa and drush ona.
+- by adriancid: Added drush command onlyone-list.
+
+Only One 7.x-1.0, 2016-02-23
+----------------------------
+- Initial release.

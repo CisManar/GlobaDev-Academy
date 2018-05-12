@@ -1,0 +1,9 @@
+.allowMargin{
+margin-top: -30px;
+}
+.services-desc p{
+    height: 250px;
+}
+.event-item .event-img:after{
+    height: 100px;
+}

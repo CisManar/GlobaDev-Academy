@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the Only One module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function onlyone_install() {
+  // Creating the default values for the module's variables.
+  variable_set('onlyone_node_types', array());
+  variable_set('onlyone_new_menu_entry', FALSE);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function onlyone_uninstall() {
+  // Deleting the module's variables.
+  variable_del('onlyone_node_types');
+  variable_del('onlyone_new_menu_entry');
+}
