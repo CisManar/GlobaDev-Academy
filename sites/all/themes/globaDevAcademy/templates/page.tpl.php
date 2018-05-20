@@ -139,7 +139,8 @@
 						                <div class="info-text">
 						                    <a href="mailto:info@domain.com">
 						                    	<span>Mail Us</span>
-												info@domain.com
+												<?php print render($page['main_email']);?>
+
 											</a>
 						                </div>
 						            </div>
@@ -157,7 +158,7 @@
 						                <div class="info-text">
 						                    <a href="tel:4155551234">
 						                    	<span>Call Us</span>
-												+1234-567-890
+												<?php print render($page['main_phone']);?>
 											</a>
 						                </div>
 						            </div>
@@ -179,8 +180,9 @@
 									</div> -->
 									<a class="rs-menu-toggle"><i class="fa fa-bars"></i>Menu</a>
 									<nav class="rs-menu">
-										<ul class="nav-menu">
+									<!--	<ul class="nav-menu">
 											<?php
+											/*
 												$main_menu_tree = menu_tree_all_data('main-menu');
 												foreach($main_menu_tree as $m) {
 												$children = '';
@@ -201,8 +203,14 @@
 													echo '<li><a href="/'.drupal_lookup_path('alias',$m['link']['link_path']).'">'.$m['link']['link_title'].'</a></li>';
 												}
 												}
+												*/
 											?>
+														
+											
+
 										</ul>
+											-->
+										<?php print render($page['header']); ?>	
 									</nav>
 								</div>
 							</div>
@@ -215,8 +223,18 @@
 
 		</div>
         <!--Full width header End-->
+		<?php if(drupal_is_front_page()) {unset($page['content']['system_main']['default_message']);} ?>
 		
+		<?php print render($page['content']); ?>		
+		
+		
+		<!--start front page -->
+		<?php
+		if (drupal_is_front_page()) { 
+		?>
 		<!-- Slider Area Start -->
+		
+
         <div id="rs-slider" class="slider-overlay-2">     
         	<div id="home-slider1" class='single-item'>
 
@@ -224,10 +242,11 @@
 
         	</div>         
         </div>
+
         <!-- Slider Area End -->
 		
 		<!-- Services Start -->
-        <div class="rs-services rs-services-style1">
+        <div id="courses-section" class="rs-services rs-services-style1">
 
                 <div class="row rowService">
 					
@@ -449,18 +468,22 @@
         </div>
         <!-- Testimonial End -->
 		
- 
+		<?php } ?> 
+		<!-- end front page -->
        
         <!-- Footer Start -->
         <footer id="rs-footer" class="bg3 rs-footer">
-			<div class="container">
+		<?php
+			if (drupal_is_front_page()) { 
+		?>
+			<div class="container" id="contact-adress">
 				<!-- Footer Address -->
 				<div>
 					<?php print render($page['footer_address']); ?>
 						
 				</div>
 			</div>
-			
+			<?php } ?>	
 			<!-- Footer Top -->
             <div class="footer-top">
                 <div class="container">

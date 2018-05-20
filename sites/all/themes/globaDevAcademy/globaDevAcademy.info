@@ -4,6 +4,17 @@ core = 7.x
 
 screenshot = screenshot.png
 
+features[] = logo 
+features[] = name 
+features[] = slogan 
+features[] = node_user_picture 
+features[] = comment_user_picture 
+features[] = comment_user_verification 
+features[] = favicon 
+features[] = main_menu 
+features[] = secondary_menu 
+features[] = my-menu
+
 regions[header] = Header 
 regions[highlighted] = Highlighted 
 regions[help] = Help 
@@ -11,7 +22,6 @@ regions[content] = Content
 regions[sidebar_first] = Left sidebar 
 regions[sidebar_second] = Right sidebar 
 regions[footer] = Footer 
-
 
 regions[main_slider] = main slider
 regions[courses] = courses
@@ -21,7 +31,8 @@ regions[events] = events
 regions[about_us] =about us
 regions[social_links] = social links
 regions[footer_address] = Footer Address
-
+regions[main_phone] = Main Phone
+regions[main_email] = Main Email
 
 stylesheets[all][] = apple-touch-icon.html
 stylesheets[all][] = css/bootstrap.min.css
@@ -38,7 +49,8 @@ stylesheets[all][] = css/rsmenu-main.css
 stylesheets[all][] = css/rsmenu-transitions.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/responsive.css
-
+stylesheets[all][] = photo-gallery/photo-gallery.css
+ 
 
 stylesheets[all][] = css/owl.carousel.min.css
 stylesheets[all][] = owlcarousel/assets/owl.theme.default.min.css
@@ -60,3 +72,5 @@ scripts[] = js/rsmenu-main.js
 scripts[] = js/color-style.js
 scripts[] = js/my.js
 scripts[] = js/main.js
+scripts[] = photo-gallery/photo-gallery.js
+
