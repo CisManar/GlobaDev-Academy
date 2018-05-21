@@ -1,7 +1,8 @@
 <div class="event-img">
     <img id='eventImg' alt="event img" src="<?php print file_create_url($row->_field_data['nid']['entity']->field_event_image['und'][0]['uri']); ?>"/>
-
-                                    <a class="image-link" href="#" title="<?php print $fields['title']->content;?> ">
+    
+                                    <a class="image-link" href="<?php print "?q=node/" . $fields['nid']->content;?>
+" title="<?php print $fields['title']->content;?> ">
                                         <i class="fa fa-link"></i>
                                     </a>
 			                    </div>

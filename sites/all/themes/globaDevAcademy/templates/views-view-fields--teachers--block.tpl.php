@@ -23,7 +23,7 @@
     <div class="display-table">
         <div class="display-table-cell">
 			<h3 class="team-name">
-                <a href="teachers-single.html">
+                <a href="<?php print "?q=node/" . $fields['nid']->content;?>">
                 <?php print $fields['title']->content; ?>
                 </a>
             </h3>

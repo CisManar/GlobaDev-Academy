@@ -99,7 +99,6 @@ $(function(){
   var li  = document.createElement('li');
   $("nav ul").removeClass("menu").addClass("nav-menu");
   $("nav ul li").addClass("menu-item-has-children");
-  
 });
 
 /** */
