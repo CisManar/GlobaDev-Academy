@@ -27,9 +27,59 @@
  * @ingroup views_templates
  */
 ?>
+  
+
+<div class="rs-toolbar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="rs-toolbar-left">
+								<div class="welcome-message">
+									<i class="fa fa-bank"></i><span>Welcome to 
+
+									<a href="<?php print $GLOBALS['base_path']; ?>" title="<?php print t('Home'); ?>" rel="home">
+									<span><?php print variable_get('site_name', 'Drupal'); ?></span></a>	
+
+									</span> 
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="rs-toolbar-right">
+
+								<div class="toolbar-share-icon">
+								<?php print views_embed_view('social_icons_links','social_icons_links_block', $node->nid); ?>
+
+
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 <div class="inner-page">
-
+  
+<!-- Breadcrumbs Start -->
+<div class="rs-breadcrumbs bg7 breadcrumbs-overlay" style="background:url(./sites/default/files/head-background.jpg) no-repeat center;background-size:cover;">
+		    <div class="breadcrumbs-inner">
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-md-12 text-center">
+		                    <h1 class="page-title">OUR TEACHERS</h1>
+		                    <ul>
+		                        <li>
+		                            <a class="active" href="<?php print $GLOBALS['base_path'];?>">Home</a>
+		                        </li>
+		                        <li>Our Teachers</li>
+		                    </ul>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- Breadcrumbs End -->
 <div id="rs-team-2" class="rs-team-2 team-page sec-spacer">
 			<div class="container">
       <div class="row grid">

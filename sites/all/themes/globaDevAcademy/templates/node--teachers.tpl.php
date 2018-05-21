@@ -80,6 +80,55 @@
  * @ingroup themeable
  */
 ?>
+ <div class="rs-toolbar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="rs-toolbar-left">
+								<div class="welcome-message">
+									<i class="fa fa-bank"></i><span>Welcome to 
+
+									<a href="<?php print $GLOBALS['base_path']; ?>" title="<?php print t('Home'); ?>" rel="home">
+									<span><?php print variable_get('site_name', 'Drupal'); ?></span></a>	
+
+									</span> 
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="rs-toolbar-right">
+
+								<div class="toolbar-share-icon">
+								<?php print views_embed_view('social_icons_links','social_icons_links_block', $node->nid); ?>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+
+<!-- Breadcrumbs Start -->
+<div class="rs-breadcrumbs bg7 breadcrumbs-overlay">
+		    <div class="breadcrumbs-inner">
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-md-12 text-center">
+		                    <h1 class="page-title">TEACHERS SINGLE</h1>
+		                    <ul>
+		                        <li>
+		                            <a class="active" href="<?php print $GLOBALS['base_path'];?>">Home</a>
+		                        </li>
+		                        <li>
+									<a href="?q=teachers-list"> Teachers </a>
+								</li>
+		                    </ul>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- Breadcrumbs End -->
 
 	<div class="rs-team-single pt-100">
 			<div class="container">

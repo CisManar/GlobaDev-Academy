@@ -90,7 +90,13 @@
         </div>
 -->
 		<!--Preloader area end here-->
+		<!--start front page -->
+		<?php if(drupal_is_front_page()) {unset($page['content']['system_main']['default_message']);} ?>
 		
+		<?php print render($page['content']); ?>
+		<?php
+		if (drupal_is_front_page()) { 
+		?>
         <!--Full width header Start-->
 		<div class="full-width-header">
 
@@ -148,7 +154,12 @@
 							</div>
 							<div class="col-md-4 col-sm-12">
 								<div class="logo-area text-center">
-									<a href="index-2.html"><img src="sites/all/themes/globaDevAcademy/images/logo.png" alt="logo"></a>
+																	
+									<?php if ($logo): ?>
+										<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+										<img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+										</a>
+									<?php endif; ?>
 								</div>
 							</div>
 							<div class="col-md-4 col-sm-12">
@@ -156,10 +167,8 @@
 						            <div id="phone-details" class="widget-text">
 						                <i class="glyph-icon flaticon-phone-call"></i>
 						                <div class="info-text">
-						                    <a href="tel:4155551234">
 						                    	<span>Call Us</span>
 												<?php print render($page['main_phone']);?>
-											</a>
 						                </div>
 						            </div>
 						        </div>
@@ -223,15 +232,10 @@
 
 		</div>
         <!--Full width header End-->
-		<?php if(drupal_is_front_page()) {unset($page['content']['system_main']['default_message']);} ?>
-		
-		<?php print render($page['content']); ?>		
+				
 		
 		
-		<!--start front page -->
-		<?php
-		if (drupal_is_front_page()) { 
-		?>
+		
 		<!-- Slider Area Start -->
 		
 
@@ -286,6 +290,9 @@
 						<div class="rs-carousel" id="events" >
 			                <?php print render($page['events']); ?>
 			            </div>
+						<div class="text-center">
+							<a class="primary-btn" href="?q=events-list">View All Events</a>
+						</div>
 			        </div>
 			    </div>
 			</div>
@@ -301,152 +308,15 @@
                 </div>
 				<div class="rs-carousel" id="staff" >
 						
-					<?php print render($page['teachers']); ?>
+					<?php print render($page['teachers']); ?>					
 
+				</div>
+				<div class="text-center">
+					<a class="primary-btn" href="?q=teachers-list">View All Teachers</a>
 				</div>
 			</div>
 		</div>
         <!-- Team End -->
-
-		<!-- Calltoaction Start -->
-		
-		<!--
-        <div id="rs-calltoaction" class="rs-calltoaction sec-spacer bg4">
-            <div class="container">
-                <div class="rs-cta-inner text-center">
-                    <div class="sec-title mb-50 text-center">
-                        <h2 class="white-color">WEB DESIGN &amp; DEVLOPMENT COURSE</h2>      
-                        <p class="white-color">Fusce sem dolor, interdum in efficitur at, faucibus nec lorem.</p>
-                    </div>
-				    <a class="cta-button" href="#">Join Now</a>
-				</div>
-            </div>
-		</div>
-											-->
-        <!-- Calltoaction End -->
-
-		<!-- Latest News Start -->
-		<!--
-        <div id="rs-latest-news" class="rs-latest-news sec-spacer">
-			<div class="container">
-				<div class="sec-title mb-50 text-center">
-                    <h2> LASTEST On OUR Blog</h2>      
-                	<p>Fusce sem dolor, interdum in efficitur at, faucibus nec lorem. Sed nec molestie justo.</p>
-                </div>
-				<div class="row">
-			        <div class="col-md-6">
-						<div class="news-normal-block">
-		                    <div class="news-img">
-		                    	<a href="#">
-		                        	<img src="sites/all/themes/globaDevAcademy/images/blog/1.jpg" alt="" />
-		                    	</a>
-		                    </div>
-	                    	<div class="news-date">
-	                    		<i class="fa fa-calendar-check-o"></i>
-	                    		<span>June  28,  2017</span>
-	                    	</div>
-	                    	<h4 class="news-title"><a href="blog-details.html">Those Other College Expenses You Aren't Thinking About</a></h4>
-	                    	<div class="news-desc">
-	                    		<p>
-	                    			Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem the purus eu sapien curabitur.Lorem Ipsum is therefore always free from repetitionetc.
-	                    		</p>
-	                    	</div>
-	                    	<div class="news-btn">
-	                    		<a href="#">Read More</a>
-	                    	</div>
-		                </div>
-			        </div>
-			        <div class="col-md-6">
-			        	<div class="news-list-block">
-			        		<div class="news-list-item">
-			                    <div class="news-img">
-			                    	<a href="#">
-			                        	<img src="sites/all/themes/globaDevAcademy/images/blog/2.jpg" alt="" />
-			                    	</a>
-			                    </div>			        			
-								<div class="news-content">
-			                    	<h5 class="news-title"><a href="blog-details.html">While the lovely valley team work</a></h5>
-			                    	<div class="news-date">
-			                    		<i class="fa fa-calendar-check-o"></i>
-			                    		<span>June  28,  2017</span>
-			                    	</div>
-			                    	<div class="news-desc">
-			                    		<p>
-			                    			Excepteur sint occaecat cupidatat non proident,
-			                    			sunt in culpa qui officia deserunt.
-			                    		</p>
-			                    	</div>
-				                </div>			        			
-			        		</div>
-			        		<div class="news-list-item">
-			                    <div class="news-img">
-			                    	<a href="#">
-			                        	<img src="sites/all/themes/globaDevAcademy/images/blog/3.jpg" alt="" />
-			                    	</a>
-			                    </div>			        			
-								<div class="news-content">
-			                    	<h5 class="news-title"><a href="blog-details.html">I must explain to you how all this idea</a></h5>
-			                    	<div class="news-date">
-			                    		<i class="fa fa-calendar-check-o"></i>
-			                    		<span>June  28,  2017</span>
-			                    	</div>
-			                    	<div class="news-desc">
-			                    		<p>
-			                    			Excepteur sint occaecat cupidatat non proident,
-			                    			sunt in culpa qui officia deserunt.
-			                    		</p>
-			                    	</div>
-				                </div>			        			
-			        		</div>
-			        		<div class="news-list-item">
-			                    <div class="news-img">
-			                    	<a href="#">
-			                        	<img src="sites/all/themes/globaDevAcademy/images/blog/4.jpg" alt="" />
-			                    	</a>
-			                    </div>			        			
-								<div class="news-content">
-			                    	<h5 class="news-title"><a href="blog-details.html">I should be incapable of drawing a stroke</a></h5>
-			                    	<div class="news-date">
-			                    		<i class="fa fa-calendar-check-o"></i>
-			                    		<span>June  28,  2017</span>
-			                    	</div>
-			                    	<div class="news-desc">
-			                    		<p>
-			                    			Excepteur sint occaecat cupidatat non proident,
-			                    			sunt in culpa qui officia deserunt.
-			                    		</p>
-			                    	</div>
-				                </div>			        			
-			        		</div>
-			        	</div>
-			        </div>
-			    </div>
-			</div>
-		</div>
-											-->
-        <!-- Latest News End -->
-
-		<!-- Products Start -->
-
-
-		<!-- Newslatter Start -->
-<!--
-        <div id="rs-newslatter" class="rs-newslatter sec-black sec-spacer">
-            <div class="container">
-                <div class="row rs-vertical-middle">
-                    <div class="col-md-6">
-                        <h3 class="newslatter-title">STAY CONNECTED WITH US</h3>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <form class="newslatter-form">
-                            <input type="text" class="form-input" placeholder="Enter Your Email Address">
-                            <button type="submit" class="form-button">SUBSCRIBE</button>
-                        </form>						
-                    </div>
-                </div>
-            </div>
-        </div>
--->
 
 		<!-- Testimonial Start -->
         <div id="rs-testimonial" class="rs-testimonial bg5 sec-spacer">

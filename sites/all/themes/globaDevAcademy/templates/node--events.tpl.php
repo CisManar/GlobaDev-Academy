@@ -92,11 +92,7 @@
         </div>
       -->
         <!--Preloader area end here-->
-		    <?php
-                           //     print $title;
-                           //     print $node->title['und'][0]['value'];
-                              
-                               ?>
+
         <!-- Breadcrumbs Start -->
         <?php
             $urlbg7 = file_create_url($node->field_event_image[$node->language][0]['uri']);
@@ -108,20 +104,59 @@
             
         ?>
 
+       <div class="rs-toolbar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="rs-toolbar-left">
+								<div class="welcome-message">
+									<i class="fa fa-bank"></i><span>Welcome to 
 
-        <div class="rs-breadcrumbs bg7 breadcrumbs-overlay" 
+									<a href="<?php print $GLOBALS['base_path']; ?>" title="<?php print t('Home'); ?>" rel="home">
+									<span><?php print variable_get('site_name', 'Drupal'); ?></span></a>	
+
+									</span> 
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="rs-toolbar-right">
+
+								<div class="toolbar-share-icon">
+                                <?php print views_embed_view('social_icons_links','social_icons_links_block', $node->nid); ?>
+
+
+								</div>
+								<a href="#" class="apply-btn">Apply For Event Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+
+
+        <!-- Breadcrumbs Start -->
+        <div class="rs-breadcrumbs breadcrumbs-overlay" 
         style="background : url(<?php echo $urlbg7; ?>) no-repeat center fixed;background-size: cover" id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 		    <div class="breadcrumbs-inner">
 		        <div class="container">
 		            <div class="row">
 		                <div class="col-md-12 text-center">
-		                    <h1 class="page-title"><?php print $title; ?></h1>
+                            <h1 class="page-title"><?php print $title; ?></h1>
+                            <span> By <?php print $node->field_lecturer_name['und'][0]['value']; ?>  </span>
 		                    <ul>
-		                        <li> By
-                              <a class="" href="index-2.html">
-                                <?php print $node->field_lecturer_name['und'][0]['value']; ?>
-                              </a>
-                            </li>
+		                        <li> 
+                                    <a class="active" href="<?php print $GLOBALS['base_path']; ?>">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                <a class="active" href="?q=events-list">
+
+                                    Events
+                                </a>
+                                </li>
+                                <li> <?php print $title; ?> </li>
 		                    </ul>
 		                </div>
 		            </div>
