@@ -1,1 +1,7 @@
 globaDevAcademy
+
+mysqldump -u root -p  globaDevAcademy < globaDevAcademy.sql
+
+mysql -u root -p  globaDevAcademy < globaDevAcademy.sql
+
+
